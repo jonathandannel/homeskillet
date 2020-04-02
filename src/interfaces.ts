@@ -7,6 +7,7 @@ export interface AppState {
   dummy: boolean | null;
   loading: boolean;
   selectedCity: string | null;
+  allCities: ReadonlyArray<string> | null;
 }
 
 export interface ResultState {

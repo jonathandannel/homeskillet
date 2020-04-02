@@ -15,6 +15,14 @@ export const navbarStyles = makeStyles(({ palette }) => ({
   }
 }));
 
+export const miscStyles = makeStyles(({ palette }) => ({
+  introText: {
+    color: "#525252",
+    marginBottom: "3rem",
+    paddingLeft: "0.25rem"
+  }
+}));
+
 export const loadingStyles = makeStyles(({ palette }) => ({
   main: {
     marginBottom: "5vh"
@@ -27,29 +35,53 @@ export const loadingStyles = makeStyles(({ palette }) => ({
 export const searchStyles = makeStyles(({ palette }) => ({
   main: {
     display: "flex",
-    justifyContent: "center",
+    width: "100%",
+    paddingLeft: "1px",
     marginBottom: "3rem"
   },
   formControl: {
-    width: "75%"
+    width: "50vw",
+    display: "flex",
+    flexDirection: "row"
   },
   input: {
-    marginBottom: "2rem"
+    marginBottom: "2rem",
+    width: "25vw"
+  },
+  iconCity: {
+    color: palette.primary.main,
+    paddingTop: "0.8rem",
+    fontSize: "1.5rem",
+    marginRight: "1rem"
+  },
+  iconRefine: {
+    color: palette.primary.main,
+    paddingTop: "1rem",
+    fontSize: "1.5rem",
+    marginRight: "1rem"
+  },
+  flex: {
+    display: "flex",
+    marginRight: "3rem"
+  },
+  searchButton: {
+    height: "50%"
   }
 }));
 
-export const resultStyles = makeStyles(() => ({
+export const resultListStyles = makeStyles(() => ({
+  paper: {
+    height: "50vw",
+    padding: "3rem",
+    marginBottom: "2rem",
+    justifyContent: "flex",
+    flexWrap: "wrap"
+  }
+}));
+
+export const resultCardStyles = makeStyles(() => ({
   main: {
-    display: "flex",
-    justifyContent: "center",
-    border: "1px solid lightgrey",
-    height: "40vh",
-    borderRadius: "5px"
-  },
-  formControl: {
-    width: "50%"
-  },
-  input: {
-    marginBottom: "1rem"
+    margin: "2rem",
+    padding: "1rem"
   }
 }));

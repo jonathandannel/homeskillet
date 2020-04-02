@@ -15,10 +15,10 @@ interface IProps {
 const Navbar = ({ appState }: IProps) => {
   const styles = navbarStyles();
   return (
-    <AppBar className={styles.main} position="static">
+    <AppBar elevation={1} className={styles.main} position="static">
       <Container>
         <Typography className={styles.text} color="primary" variant="h5">
-          homecooked
+          ristorio
         </Typography>
       </Container>
     </AppBar>

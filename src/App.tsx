@@ -53,6 +53,7 @@ const App: React.FC<IProps & ConnProps> = ({
   searchState,
   setAllCities,
   selectCity,
+  setLoading,
   setSearchFilter,
   setFilterType
 }): ReactElement => {
@@ -64,10 +65,13 @@ const App: React.FC<IProps & ConnProps> = ({
 
   // Fetch all cities on load
   useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1200);
     queryAllCities().then(cities => {
       if (cities) setAllCities(cities);
     });
-    FilterType;
   }, []);
 
   return (
@@ -86,7 +90,7 @@ const App: React.FC<IProps & ConnProps> = ({
           setSearchFilter={setSearchFilter}
           setFilterType={setFilterType}
         />
-        {/* <ResultList appState={appState} searchState={searchState} /> */}
+        <ResultList appState={appState} searchState={searchState} />
       </Container>
     </ThemeProvider>
   );

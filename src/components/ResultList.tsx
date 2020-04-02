@@ -1,17 +1,17 @@
 import React, { useEffect, ReactElement } from "react";
 import { Container, Paper, Card } from "@material-ui/core";
-import { AppState, ResultState } from "../interfaces";
+import { AppState, SearchState } from "../interfaces";
 import { resultListStyles } from "./styles";
 import ResultCard from "./Result";
 
 interface IProps {
   appState: AppState;
-  resultState: ResultState;
+  searchState: SearchState;
 }
 
 const ResultList: React.FC<IProps> = ({
   appState,
-  resultState
+  searchState
 }): ReactElement => {
   const styles = resultListStyles();
   return (

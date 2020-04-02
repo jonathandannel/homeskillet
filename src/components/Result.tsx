@@ -1,6 +1,6 @@
 import React, { useEffect, ReactElement } from "react";
 import { Container, Paper, Card } from "@material-ui/core";
-import { AppState, ResultState } from "../interfaces";
+import { AppState } from "../interfaces";
 import { resultCardStyles } from "./styles";
 
 const ResultCard: React.FC = (): ReactElement => {

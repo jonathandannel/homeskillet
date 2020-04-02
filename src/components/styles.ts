@@ -4,6 +4,7 @@ export const navbarStyles = makeStyles(({ palette }) => ({
   main: {
     height: "8vh",
     paddingLeft: "1rem",
+    paddingRight: "1rem",
     display: "flex",
     background: "white",
     flexDirection: "column",
@@ -64,8 +65,8 @@ export const searchStyles = makeStyles(({ palette }) => ({
     display: "flex",
     marginRight: "3rem"
   },
-  searchButton: {
-    height: "50%"
+  cityButton: {
+    margin: "1rem"
   }
 }));
 

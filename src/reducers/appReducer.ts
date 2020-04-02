@@ -3,7 +3,7 @@ import { AppState, Action } from "../interfaces";
 
 const initialState: AppState = {
   dummy: null,
-  loading: false,
+  loading: true,
   selectedCity: null
 };
 

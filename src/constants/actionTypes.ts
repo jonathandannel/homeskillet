@@ -1,2 +1,7 @@
-export const SET_DUMMY = "SET_DUMMY";
+export const SET_LOADING = "SET_LOADING";
 export const SET_ALL_CITIES = "SET_ALL_CITIES";
+export const SELECT_CITY = "SELECT_CITY";
+
+export const SET_SEARCH_FILTER = "SET_SEARCH_FILTER";
+export const SET_FILTER_TYPE = "SET_FILTER_TYPE";
+export const SET_ALL_CITY_RESTAURANTS = "SET_ALL_CITY_RESTAURANTS";

@@ -6,14 +6,17 @@ import {
   TextField,
   Container
 } from "@material-ui/core";
-import { AppState, ResultState } from "../interfaces";
+import { Dispatch } from "redux";
+import { AppState, ResultState, Action } from "../interfaces";
 import { searchStyles } from "./styles";
 import { LocationOn, NearMe, Search } from "@material-ui/icons";
+
 interface IProps {
   appState: AppState;
+  selectCity: (c: string) => Dispatch<Action>;
 }
 
-const SearchFilter = ({ appState }: IProps) => {
+const SearchFilter = ({ appState, selectCity }: IProps) => {
   const styles = searchStyles();
   return (
     <Container className={styles.main}>

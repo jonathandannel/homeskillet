@@ -1,24 +1,30 @@
+export interface RootState {
+  app: AppState;
+  search: SearchState;
+}
+
+export interface AppState {
+  loading: boolean;
+  selectedCity: string | null;
+  allCities: ReadonlyArray<string> | [];
+}
+
+export interface SearchState {
+  resultCount: number;
+  allCityRestaurants: ReadonlyArray<Restaurant> | [];
+  searchFilter: string;
+  searchFilterType: FilterType | null;
+}
+
 export interface Action {
   type: string;
   value: any;
 }
 
-export interface AppState {
-  dummy: boolean | null;
-  loading: boolean;
-  selectedCity: string | null;
-  allCities: ReadonlyArray<string> | null;
-}
-
-export interface ResultState {
-  dummy: boolean | null;
-  resultCount: number;
-  allRestaurants: ReadonlyArray<Restaurant> | null;
-}
-
-export interface RootState {
-  app: AppState;
-  results: ResultState;
+export enum FilterType {
+  Name,
+  Address,
+  Area
 }
 
 export interface Restaurant {

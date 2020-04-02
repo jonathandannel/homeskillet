@@ -15,17 +15,18 @@ import ResultList from "./components/ResultList";
 import Loading from "./components/Loading";
 import theme from "./theme";
 import { miscStyles } from "./components/styles";
-import { setAllCities } from "./actions/appActions";
+import { selectCity, setAllCities } from "./actions/appActions";
 
 import { queryRestaurantsByCity, queryAllCities } from "./api";
 
-const mapStateToProps = (state: RootState) => ({
-  appState: state.app,
-  resultState: state.results
+const mapStateToProps = ({ app, search }: RootState) => ({
+  appState: app,
+  searchState: search
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
-  setAllCities: (c: ReadonlyArray<string>) => dispatch(setAllCities(c))
+  setAllCities: (c: ReadonlyArray<string>) => dispatch(setAllCities(c)),
+  selectCity: (c: string) => dispatch(selectCity(c))
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -63,7 +64,7 @@ const App: React.FC<IProps & ConnProps> = ({
         <Typography variant="h2" className={styles.introText}>
           Find the food you love.
         </Typography>
-        <SearchFilter appState={appState} />
+        <SearchFilter appState={appState} selectCity={selectCity} />
         <ResultList appState={appState} resultState={resultState} />
       </Container>
     </ThemeProvider>

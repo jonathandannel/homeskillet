@@ -1,25 +1,33 @@
-import { SET_DUMMY, SET_ALL_CITIES } from "../constants/actionTypes";
+import {
+  SET_LOADING,
+  SET_ALL_CITIES,
+  SELECT_CITY
+} from "../constants/actionTypes";
 import { AppState, Action } from "../interfaces";
 
 const initialState: AppState = {
-  dummy: null,
   loading: false,
   selectedCity: null,
   allCities: null
 };
 
 const appReducer = (state = initialState, action: Action): AppState => {
-  const newVal = action.value;
+  const newState = action.value;
   switch (action.type) {
-    case SET_DUMMY:
+    case SET_LOADING:
       return {
         ...state,
-        dummy: newVal
+        loading: newState
+      };
+    case SELECT_CITY:
+      return {
+        ...state,
+        selectedCity: newState
       };
     case SET_ALL_CITIES:
       return {
         ...state,
-        allCities: newVal
+        allCities: newState
       };
     default:
       return state;

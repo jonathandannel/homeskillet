@@ -28,10 +28,13 @@ const SearchFilter = ({
   const handleCityChange = (e: ChangeEvent) => {};
 
   useEffect(() => {
-    const matches = allCities.filter(
-      q => q.slice(0, cityQuery.length) === cityQuery
-    );
-    setCityList([...matches]);
+    if (cityQuery.length > 3) {
+      const matches = allCities.filter(
+        q => q.slice(0, cityQuery.length) === cityQuery
+      );
+      console.log(matches);
+      setCityList([...matches]);
+    }
   }, [cityQuery]);
 
   return (

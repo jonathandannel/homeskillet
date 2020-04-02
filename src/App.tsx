@@ -86,7 +86,7 @@ const App: React.FC<IProps & ConnProps> = ({
           setSearchFilter={setSearchFilter}
           setFilterType={setFilterType}
         />
-        <ResultList appState={appState} searchState={searchState} />
+        {/* <ResultList appState={appState} searchState={searchState} /> */}
       </Container>
     </ThemeProvider>
   );

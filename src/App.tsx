@@ -1,26 +1,24 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useEffect } from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { AppState } from "./interfaces";
+import { RootState } from "./reducers";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const mapStateToProps = (state: RootState) => ({
+  appState: state.app
+});
+
+const connector = connect(mapStateToProps, null);
+
+type ConnProps = ConnectedProps<typeof connector>;
+
+interface IProps {
+  appState: AppState;
 }
 
-export default App;
+function App({ appState }: IProps & ConnProps) {
+  useEffect(() => {
+    console.log(appState);
+  }, [appState]);
+  return <div></div>;
+}
+export default connector(App);

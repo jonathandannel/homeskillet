@@ -1,9 +1,6 @@
 import { SET_DUMMY } from "../constants/actionTypes";
 import { Action } from "../actions/appActions";
-
-interface AppState {
-  dummy: boolean | null;
-}
+import { AppState } from "../interfaces";
 
 const initialState: AppState = {
   dummy: null

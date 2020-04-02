@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, ReactElement } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState, AppState, ResultState } from "./interfaces";
 import Navbar from "./components/Navbar";
@@ -19,7 +19,10 @@ interface IProps {
   resultState: ResultState;
 }
 
-const App = ({ appState, resultState }: IProps & ConnProps) => {
+const App: React.FC<IProps & ConnProps> = ({
+  appState,
+  resultState
+}): ReactElement => {
   useEffect(() => {
     console.log(appState, resultState);
   }, [appState, resultState]);
@@ -28,7 +31,7 @@ const App = ({ appState, resultState }: IProps & ConnProps) => {
     <div>
       <Navbar appState={appState} />
       <SearchFilter appState={appState} />
-      <ResultList appState={appState} />
+      <ResultList appState={appState} resultState={resultState} />
     </div>
   );
 };

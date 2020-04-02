@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, ReactElement } from "react";
 import { AppState, ResultState } from "../interfaces";
 
 interface IProps {
   appState: AppState;
+  resultState: ResultState;
 }
 
-const ResultList = ({ appState }: IProps) => {
+const ResultList: React.FC<IProps> = ({
+  appState,
+  resultState
+}): ReactElement => {
   return (
     <ul>
       {["1", "2", "3"].map(r => (

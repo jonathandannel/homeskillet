@@ -1,13 +1,13 @@
 import { SET_DUMMY } from "../constants/actionTypes";
-import { AppState, Action } from "../interfaces";
+import { ResultState, Action } from "../interfaces";
 
-const initialState: AppState = {
+const initialState: ResultState = {
   dummy: null,
-  loading: false,
-  selectedCity: null
+  resultCount: 0,
+  allRestaurants: []
 };
 
-const appReducer = (state = initialState, action: Action): AppState => {
+const resultReducer = (state = initialState, action: Action): ResultState => {
   switch (action.type) {
     case SET_DUMMY:
       const { value } = action;
@@ -20,4 +20,4 @@ const appReducer = (state = initialState, action: Action): AppState => {
   }
 };
 
-export default appReducer;
+export default resultReducer;

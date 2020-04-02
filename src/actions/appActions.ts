@@ -1,8 +1,4 @@
 import { SET_DUMMY } from "../constants/actionTypes";
-
-export interface Action {
-  type: string;
-  value: any;
-}
+import { Action } from "../interfaces";
 
 export const setDummy = (b: boolean): Action => ({ type: SET_DUMMY, value: b });

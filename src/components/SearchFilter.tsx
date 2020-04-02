@@ -1,23 +1,39 @@
-import React, { useEffect } from "react";
-import {
-  FormControl,
-  Fab,
-  Button,
-  TextField,
-  Container
-} from "@material-ui/core";
-import { Dispatch } from "redux";
-import { AppState, ResultState, Action } from "../interfaces";
+import React, { useState, useEffect, ChangeEvent } from "react";
+import { FormControl, TextField, Container } from "@material-ui/core";
+import { AppState, SearchState, FilterType, Action } from "../interfaces";
 import { searchStyles } from "./styles";
 import { LocationOn, NearMe, Search } from "@material-ui/icons";
 
 interface IProps {
   appState: AppState;
-  selectCity: (c: string) => Dispatch<Action>;
+  searchState: SearchState;
+  setLoading: (b: boolean) => Action;
+  selectCity: (c: string) => Action;
+  setSearchFilter: (q: string) => Action;
+  setFilterType: (f: FilterType) => Action;
 }
 
-const SearchFilter = ({ appState, selectCity }: IProps) => {
+const SearchFilter = ({
+  appState: { allCities },
+  searchState,
+  setLoading,
+  selectCity,
+  setSearchFilter,
+  setFilterType
+}: IProps) => {
   const styles = searchStyles();
+  const [cityQuery, setCityQuery] = useState("");
+  const [cityList, setCityList] = useState([]);
+
+  const handleCityChange = (e: ChangeEvent) => {};
+
+  useEffect(() => {
+    const matches = allCities.filter(
+      q => q.slice(0, cityQuery.length) === cityQuery
+    );
+    setCityList([...matches]);
+  }, [cityQuery]);
+
   return (
     <Container className={styles.main}>
       <FormControl className={styles.formControl}>
@@ -26,6 +42,7 @@ const SearchFilter = ({ appState, selectCity }: IProps) => {
           <TextField
             required
             color="secondary"
+            onChange={handleCityChange}
             label="City"
             variant="outlined"
             className={styles.input}

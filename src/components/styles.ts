@@ -15,7 +15,7 @@ export const navbarStyles = makeStyles(({ palette }) => ({
   }
 }));
 
-export const miscStyles = makeStyles(({ palette }) => ({
+export const appStyles = makeStyles(({ palette }) => ({
   introText: {
     color: "#525252",
     marginBottom: "3rem",

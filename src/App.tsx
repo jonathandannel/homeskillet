@@ -4,8 +4,9 @@ import { Dispatch } from "redux";
 import {
   RootState,
   AppState,
-  ResultState,
+  SearchState,
   Action,
+  FilterType,
   Restaurant
 } from "./interfaces";
 import { ThemeProvider, Container, Typography } from "@material-ui/core";
@@ -14,10 +15,14 @@ import SearchFilter from "./components/SearchFilter";
 import ResultList from "./components/ResultList";
 import Loading from "./components/Loading";
 import theme from "./theme";
-import { miscStyles } from "./components/styles";
-import { selectCity, setAllCities } from "./actions/appActions";
-
-import { queryRestaurantsByCity, queryAllCities } from "./api";
+import { appStyles } from "./components/styles";
+import { selectCity, setAllCities, setLoading } from "./actions/appActions";
+import {
+  setSearchFilter,
+  setFilterType,
+  setAllCityRestaurants
+} from "./actions/searchActions";
+import { queryAllCities } from "./api";
 
 const mapStateToProps = ({ app, search }: RootState) => ({
   appState: app,
@@ -26,7 +31,12 @@ const mapStateToProps = ({ app, search }: RootState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   setAllCities: (c: ReadonlyArray<string>) => dispatch(setAllCities(c)),
-  selectCity: (c: string) => dispatch(selectCity(c))
+  selectCity: (c: string) => dispatch(selectCity(c)),
+  setLoading: (b: boolean) => dispatch(setLoading(b)),
+  setSearchFilter: (q: string) => dispatch(setSearchFilter(q)),
+  setFilterType: (f: FilterType) => dispatch(setFilterType(f)),
+  setAllCityRestaurants: (r: ReadonlyArray<Restaurant>) =>
+    dispatch(setAllCityRestaurants(r))
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -35,25 +45,29 @@ type ConnProps = ConnectedProps<typeof connector>;
 
 interface IProps {
   appState: AppState;
-  resultState: ResultState;
+  searchState: SearchState;
 }
 
 const App: React.FC<IProps & ConnProps> = ({
   appState,
-  resultState,
-  setAllCities
+  searchState,
+  setAllCities,
+  selectCity,
+  setSearchFilter,
+  setFilterType
 }): ReactElement => {
-  const styles = miscStyles();
+  const styles = appStyles();
 
   useEffect(() => {
-    console.log(appState, resultState);
-  }, [appState, resultState]);
+    console.log(appState, searchState);
+  }, [appState, searchState]);
 
   // Fetch all cities on load
   useEffect(() => {
     queryAllCities().then(cities => {
       if (cities) setAllCities(cities);
     });
+    FilterType;
   }, []);
 
   return (
@@ -64,8 +78,15 @@ const App: React.FC<IProps & ConnProps> = ({
         <Typography variant="h2" className={styles.introText}>
           Find the food you love.
         </Typography>
-        <SearchFilter appState={appState} selectCity={selectCity} />
-        <ResultList appState={appState} resultState={resultState} />
+        <SearchFilter
+          appState={appState}
+          searchState={searchState}
+          setLoading={setLoading}
+          selectCity={selectCity}
+          setSearchFilter={setSearchFilter}
+          setFilterType={setFilterType}
+        />
+        <ResultList appState={appState} searchState={searchState} />
       </Container>
     </ThemeProvider>
   );

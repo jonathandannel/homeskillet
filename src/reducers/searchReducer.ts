@@ -8,6 +8,7 @@ import { SearchState, Action } from "../interfaces";
 const initialState: SearchState = {
   resultCount: 0,
   allCityRestaurants: [],
+  currentQueryResults: [],
   searchFilter: "",
   searchFilterType: null
 };
@@ -28,6 +29,8 @@ const searchReducer = (state = initialState, action: Action): SearchState => {
     case SET_ALL_CITY_RESTAURANTS:
       return {
         ...state,
+        resultCount: newState.length,
+        currentQueryResults: newState,
         allCityRestaurants: newState
       };
     default:

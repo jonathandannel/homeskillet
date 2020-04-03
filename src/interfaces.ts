@@ -11,7 +11,8 @@ export interface AppState {
 
 export interface SearchState {
   resultCount: number;
-  allCityRestaurants: ReadonlyArray<any> | [];
+  allCityRestaurants: any[] | [];
+  currentQueryResults: any[] | [];
   searchFilter: string;
   searchFilterType: FilterType | null;
 }

@@ -29,7 +29,7 @@ interface IProps {
 
 const SearchFilter = ({
   appState: { allCities, selectedCity },
-  searchState,
+  searchState: { allCityRestaurants, resultCount },
   setLoading,
   selectCity,
   setAllCityRestaurants,
@@ -43,11 +43,9 @@ const SearchFilter = ({
   const handleCityInput = ({
     target: { value }
   }: ChangeEvent<HTMLInputElement>): void => {
-    if (selectedCity || value === "") {
-      clearCityInput();
-      return;
+    if (value === "") {
+      setCityList([]);
     }
-
     setLoading(true);
     setCityQuery(value);
     setTimeout(() => {
@@ -55,15 +53,10 @@ const SearchFilter = ({
     }, 800);
   };
 
-  const clearCityInput = (): void => {
-    selectCity(null);
-    setCityQuery("");
-    setCityList([]);
-  };
-
   const chooseCity = (c: string): void => {
     selectCity(c);
     setCityQuery("");
+    setCityList([]);
     getAllRestaurants(c).then(r => setAllCityRestaurants(r));
   };
 
@@ -88,9 +81,6 @@ const SearchFilter = ({
               required
               color="secondary"
               value={cityQuery}
-              onFocus={() => {
-                clearCityInput();
-              }}
               onChange={handleCityInput}
               label="City"
               variant="outlined"
@@ -109,22 +99,18 @@ const SearchFilter = ({
           </div>
         </FormControl>
       </Container>
-      {!selectedCity ? (
-        <Container>
-          {cityList.map(c => (
-            <Button
-              className={styles.cityButton}
-              onClick={() => chooseCity(c)}
-              variant="contained"
-              color="primary"
-            >
-              {c}
-            </Button>
-          ))}
-        </Container>
-      ) : (
-        <Typography variant="h4">{selectedCity}</Typography>
-      )}
+      <Container>
+        {cityList.map(c => (
+          <Button
+            className={styles.cityButton}
+            onClick={() => chooseCity(c)}
+            variant="contained"
+            color="primary"
+          >
+            {c}
+          </Button>
+        ))}
+      </Container>
     </Fragment>
   );
 };

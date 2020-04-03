@@ -41,8 +41,7 @@ export const searchStyles = makeStyles(({ palette }) => ({
   main: {
     display: "flex",
     width: "100%",
-    paddingLeft: "1px",
-    marginBottom: "3rem"
+    paddingLeft: "1px"
   },
   formControl: {
     width: "50vw",
@@ -74,13 +73,16 @@ export const searchStyles = makeStyles(({ palette }) => ({
   }
 }));
 
-export const resultListStyles = makeStyles(() => ({
+export const resultListStyles = makeStyles(({ palette }) => ({
   paper: {
     height: "50vw",
     padding: "3rem",
     marginBottom: "2rem",
     justifyContent: "flex",
     flexWrap: "wrap"
+  },
+  selectedCity: {
+    color: "#525252 !important"
   }
 }));
 

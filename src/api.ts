@@ -39,8 +39,8 @@ export const getAllRestaurants = async (
   });
 
   while (allRestaurants.length < totalRestaurants) {
-    await queryRestaurantsByCity(c, page).then(r => {
-      allRestaurants.push(...r.restaurants);
+    await queryRestaurantsByCity(c, page).then(({ restaurants }) => {
+      allRestaurants.push(...restaurants);
       page += 1;
     });
   }

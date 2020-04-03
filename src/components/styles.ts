@@ -13,6 +13,10 @@ export const navbarStyles = makeStyles(({ palette }) => ({
   text: {
     letterSpacing: "0.02rem",
     fontSize: "1.7rem"
+  },
+  navbarContent: {
+    display: "flex",
+    justifyContent: "space-between"
   }
 }));
 

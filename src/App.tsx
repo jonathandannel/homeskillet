@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   setLoading: (b: boolean) => dispatch(setLoading(b)),
   setSearchFilter: (q: string) => dispatch(setSearchFilter(q)),
   setFilterType: (f: FilterType) => dispatch(setFilterType(f)),
-  setAllCityRestaurants: (r: ReadonlyArray<Restaurant>) =>
+  setAllCityRestaurants: (r: ReadonlyArray<any>) =>
     dispatch(setAllCityRestaurants(r))
 });
 
@@ -55,6 +55,7 @@ const App: React.FC<IProps & ConnProps> = ({
   selectCity,
   setLoading,
   setSearchFilter,
+  setAllCityRestaurants,
   setFilterType
 }): ReactElement => {
   const styles = appStyles();
@@ -89,6 +90,7 @@ const App: React.FC<IProps & ConnProps> = ({
           selectCity={selectCity}
           setSearchFilter={setSearchFilter}
           setFilterType={setFilterType}
+          setAllCityRestaurants={setAllCityRestaurants}
         />
         <ResultList appState={appState} searchState={searchState} />
       </Container>

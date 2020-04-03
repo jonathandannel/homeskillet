@@ -6,15 +6,23 @@ import {
   Button,
   Typography
 } from "@material-ui/core";
-import { AppState, SearchState, FilterType, Action } from "../interfaces";
+import {
+  AppState,
+  SearchState,
+  FilterType,
+  Action,
+  Restaurant
+} from "../interfaces";
 import { searchStyles } from "./styles";
 import { LocationOn, NearMe, Search } from "@material-ui/icons";
+import { getAllRestaurants } from "../api";
 
 interface IProps {
   appState: AppState;
   searchState: SearchState;
   setLoading: (b: boolean) => Action;
   selectCity: (c: string) => Action;
+  setAllCityRestaurants: (r: ReadonlyArray<Restaurant>) => Action;
   setSearchFilter: (q: string) => Action;
   setFilterType: (f: FilterType) => Action;
 }
@@ -24,6 +32,7 @@ const SearchFilter = ({
   searchState,
   setLoading,
   selectCity,
+  setAllCityRestaurants,
   setSearchFilter,
   setFilterType
 }: IProps) => {
@@ -55,6 +64,7 @@ const SearchFilter = ({
   const chooseCity = (c: string): void => {
     selectCity(c);
     setCityQuery("");
+    getAllRestaurants(c).then(r => setAllCityRestaurants(r));
   };
 
   useEffect(() => {
@@ -90,6 +100,7 @@ const SearchFilter = ({
           <div className={styles.flex}>
             <NearMe className={styles.iconRefine}></NearMe>
             <TextField
+              disabled={selectedCity === null}
               label="Refine"
               color="secondary"
               variant="outlined"

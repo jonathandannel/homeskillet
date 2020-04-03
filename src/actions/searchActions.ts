@@ -16,7 +16,7 @@ export const setFilterType = (filter: FilterType): Action => ({
   value: filter
 });
 export const setAllCityRestaurants = (
-  restaurants: ReadonlyArray<Restaurant>
+  restaurants: ReadonlyArray<any>
 ): Action => ({
   type: SET_ALL_CITY_RESTAURANTS,
   value: restaurants

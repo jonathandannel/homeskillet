@@ -1,11 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { AppState } from "../interfaces";
-import {
-  AppBar,
-  Typography,
-  Container,
-  LinearProgress
-} from "@material-ui/core";
+import { AppBar, Typography, Container } from "@material-ui/core";
 import { navbarStyles } from "./styles";
 
 interface IProps {
@@ -17,10 +12,14 @@ const Navbar = ({ appState: { selectedCity } }: IProps) => {
   return (
     <AppBar elevation={1} className={styles.main} position="static">
       <Container>
-        <Typography className={styles.text} color="primary" variant="h5">
-          ristorio
-        </Typography>
-  <Typography variant="caption">{selectedCity ? `${selectedCity}` || 'Select a city'}</Typography>
+        <div className={styles.navbarContent}>
+          <Typography className={styles.text} color="primary" variant="h5">
+            ristorio
+          </Typography>
+          <Typography color="primary" variant="caption">
+            {selectedCity ? selectedCity : "Select a city"}
+          </Typography>
+        </div>
       </Container>
     </AppBar>
   );

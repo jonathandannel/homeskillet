@@ -21,7 +21,7 @@ const ResultList: React.FC<IProps> = ({
   },
   filterResults,
   setLoading,
-}): any => {
+}): React.ReactElement => {
   const styles = resultListStyles();
   const [shownResults, setShownResults] = useState<
     ReadonlyArray<Restaurant> | []

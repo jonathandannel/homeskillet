@@ -8,7 +8,7 @@ interface IProps {
   appState: AppState;
 }
 
-const Navbar = ({ appState: { selectedCity } }: IProps) => {
+const Navbar = ({ appState: { selectedCity } }: IProps): React.ReactElement => {
   const styles = navbarStyles();
   return (
     <AppBar elevation={1} className={styles.main} position="static">

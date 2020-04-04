@@ -34,7 +34,7 @@ const SearchFilter = ({
   clearFilter,
   setSearchFilter,
   setFilterType,
-}: IProps) => {
+}: IProps): React.ReactElement => {
   const styles = searchStyles();
   const [cityQuery, setCityQuery] = useState("");
   const [filterQuery, setFilterQuery] = useState("");

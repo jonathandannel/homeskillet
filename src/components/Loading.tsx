@@ -7,7 +7,7 @@ interface IProps {
   appState: AppState;
 }
 
-const Loading = ({ appState }: IProps) => {
+const Loading = ({ appState }: IProps): React.ReactElement => {
   const styles = loadingStyles();
   return (
     <div className={styles.main}>

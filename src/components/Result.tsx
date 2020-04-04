@@ -1,4 +1,4 @@
-import React, { useEffect, ReactElement } from "react";
+import React, { ReactElement } from "react";
 import {
   Container,
   IconButton,
@@ -17,7 +17,7 @@ interface IProps {
 const ResultCard: React.FC<IProps> = ({ result }): ReactElement => {
   const styles = resultCardStyles();
   const makeReservation = () => window.open(result.reserve_url, "_blank");
-  const makeCall = () => window.open(`tel:${result.phone}`);
+  const makeCall = () => window.open(`tel:${result.phone}`, "_blank");
   return (
     <Card className={styles.main}>
       <Avatar className={styles.avatar} src={result.image_url} />

@@ -2,7 +2,6 @@ import {
   SET_SEARCH_FILTER,
   SET_FILTER_TYPE,
   SET_ALL_CITY_RESTAURANTS,
-  SET_RESULT_PAGE,
   FILTER_RESULTS,
   CLEAR_FILTER,
 } from "../constants/actionTypes";
@@ -23,16 +22,6 @@ export const setAllCityRestaurants = (
 ): Action => ({
   type: SET_ALL_CITY_RESTAURANTS,
   value: restaurants,
-});
-
-export const setResultPage = (page: number): Action => ({
-  type: SET_RESULT_PAGE,
-  value: page,
-});
-
-export const clearSearch = (): Action => ({
-  type: SET_RESULT_PAGE,
-  value: null,
 });
 
 export const filterResults = (): Action => ({

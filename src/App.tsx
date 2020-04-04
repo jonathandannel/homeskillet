@@ -66,6 +66,10 @@ const App: React.FC<IProps & ConnProps> = ({
   const styles = appStyles();
 
   useEffect(() => {
+    console.log(searchState);
+  }, [searchState]);
+
+  useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);

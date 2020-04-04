@@ -6,7 +6,7 @@ export const paginate = (data: ReadonlyArray<any>): Map<number, []> => {
     return pages;
   }
 
-  let currentPage = 1;
+  let currentPage = 0;
   const pageCount = Math.ceil(data.length / 25);
   const perPage = 25;
 
@@ -14,8 +14,9 @@ export const paginate = (data: ReadonlyArray<any>): Map<number, []> => {
     const startIndex = currentPage * perPage;
     const endIndex = startIndex + perPage;
     const slice = data.slice(startIndex, endIndex);
+    debugger;
     if (slice.length) {
-      pages.set(currentPage, data.slice(startIndex, endIndex));
+      pages.set(currentPage + 1, data.slice(startIndex, endIndex));
     }
     currentPage += 1;
   }

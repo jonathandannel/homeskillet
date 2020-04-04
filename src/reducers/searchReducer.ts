@@ -50,9 +50,12 @@ const searchReducer = (state = initialState, action: Action): SearchState => {
     case FILTER_RESULTS: {
       const f = state.searchFilterType;
       const q = state.searchFilter;
-      const filtered = state.allCityRestaurants.filter((r) =>
-        r[f].toLowerCase().includes(q.toLowerCase())
-      );
+      const filtered = state.allCityRestaurants.filter((r) => {
+        const match = r[f].toLowerCase().includes(q.toLowerCase());
+        if (match) {
+          return match;
+        }
+      });
       return {
         ...state,
         resultCount: filtered.length,
@@ -61,7 +64,6 @@ const searchReducer = (state = initialState, action: Action): SearchState => {
       };
     }
     case CLEAR_FILTER: {
-      debugger;
       return {
         ...state,
         resultCount: state.allCityRestaurants.length,

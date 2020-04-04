@@ -6,16 +6,16 @@ export interface RootState {
 export interface AppState {
   loading: boolean;
   selectedCity: string | null;
-  allCities: ReadonlyArray<string> | [];
+  allCities: ReadonlyArray<string> | null;
 }
 
 export interface SearchState {
   resultCount: number;
   searchFilter: string;
   searchFilterType: string | null;
-  allCityRestaurants: any[] | [];
-  currentQueryResults: any[] | [];
-  currentQueryPages: Map<number, ReadonlyArray<any>>;
+  allCityRestaurants: ReadonlyArray<Restaurant> | null;
+  currentQueryResults: ReadonlyArray<Restaurant> | null;
+  currentQueryPages: Map<number, ReadonlyArray<Restaurant>>;
 }
 
 export interface Action {
@@ -25,7 +25,7 @@ export interface Action {
 
 export interface Restaurant {
   id: number;
-  name: string;
+  [name: string]: string | number;
   address: string;
   city: string;
   state: string;

@@ -5,8 +5,7 @@ import {
   FILTER_RESULTS,
   CLEAR_FILTER,
 } from "../constants/actionTypes";
-import { SearchState, Action } from "../interfaces";
-import { paginate } from "./util";
+import { SearchState, Action, Restaurant } from "../interfaces";
 
 const initialState: SearchState = {
   resultCount: 0,
@@ -48,14 +47,13 @@ const searchReducer = (state = initialState, action: Action): SearchState => {
         currentQueryPages: newCurrentQueryPages,
       };
     case FILTER_RESULTS: {
-      const f = state.searchFilterType;
-      const q = state.searchFilter;
-      const filtered = state.allCityRestaurants.filter((r) => {
-        const match = r[f].toLowerCase().includes(q.toLowerCase());
-        if (match) {
-          return match;
-        }
-      });
+      const { searchFilter, searchFilterType } = state;
+      const filtered = state.allCityRestaurants.filter((r: Restaurant) =>
+        r[searchFilterType]
+          .toString()
+          .toLowerCase()
+          .includes(searchFilter.toLowerCase())
+      );
       return {
         ...state,
         resultCount: filtered.length,
@@ -74,6 +72,30 @@ const searchReducer = (state = initialState, action: Action): SearchState => {
     default:
       return state;
   }
+};
+
+const paginate = (data: ReadonlyArray<Restaurant>): Map<number, []> => {
+  const pages = new Map();
+
+  if (data.length <= 25) {
+    pages.set(1, data);
+    return pages;
+  }
+
+  let currentPage = 0;
+  const pageCount = Math.ceil(data.length / 25);
+  const perPage = 25;
+
+  while (currentPage !== pageCount + 1) {
+    const startIndex = currentPage * perPage;
+    const endIndex = startIndex + perPage;
+    const slice = data.slice(startIndex, endIndex);
+    if (slice.length) {
+      pages.set(currentPage + 1, data.slice(startIndex, endIndex));
+    }
+    currentPage += 1;
+  }
+  return pages;
 };
 
 export default searchReducer;

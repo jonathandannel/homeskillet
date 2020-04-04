@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Container, Paper, Typography, Badge, Button } from "@material-ui/core";
-import { AppState, SearchState, Action } from "../interfaces";
+import { AppState, SearchState, Action, Restaurant } from "../interfaces";
 import { resultListStyles } from "./styles";
 import ResultCard from "./Result";
 
@@ -21,8 +21,10 @@ const ResultList: React.FC<IProps> = ({
   filterResults,
 }): any => {
   const styles = resultListStyles();
-  const [shownResults, setShownResults] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [shownResults, setShownResults] = useState<
+    ReadonlyArray<Restaurant> | []
+  >([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const backEnabled = currentPage - 1 > 0;
   const forwardEnabled = currentPage + 1 < currentQueryPages.size;
 

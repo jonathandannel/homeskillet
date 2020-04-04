@@ -38,7 +38,7 @@ const SearchFilter = ({
   const styles = searchStyles();
   const [cityQuery, setCityQuery] = useState("");
   const [filterQuery, setFilterQuery] = useState("");
-  const [cityList, setCityList] = useState([]);
+  const [cityList, setCityList] = useState<string[] | null>([]);
 
   const handleCityInput = ({
     target: { value },
@@ -57,6 +57,8 @@ const SearchFilter = ({
     setLoading(true);
     selectCity(c);
     setCityList([]);
+    setFilterType(null);
+    setFilterQuery("");
     setAllCityRestaurants(null);
     getAllRestaurants(c).then((r) => setAllCityRestaurants(r));
     setTimeout(() => {

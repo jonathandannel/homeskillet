@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   setLoading: (b: boolean) => dispatch(setLoading(b)),
   setSearchFilter: (q: string) => dispatch(setSearchFilter(q)),
   setFilterType: (f: string) => dispatch(setFilterType(f)),
-  setAllCityRestaurants: (r: ReadonlyArray<any>) =>
+  setAllCityRestaurants: (r: ReadonlyArray<Restaurant>) =>
     dispatch(setAllCityRestaurants(r)),
   clearFilter: () => dispatch(clearFilter()),
   filterResults: () => dispatch(filterResults()),

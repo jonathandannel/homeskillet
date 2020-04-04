@@ -59,8 +59,9 @@ export const searchStyles = makeStyles(({ palette }) => ({
     opacity: 0.5,
   },
   formControl: {
-    width: "100%",
+    width: "75%",
     display: "flex",
+    marginBottom: "1rem",
     flexDirection: "row",
   },
   input: {

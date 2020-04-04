@@ -15,7 +15,6 @@ export interface SearchState {
   currentQueryResults: any[] | [];
   searchFilter: string;
   searchFilterType: FilterType | null;
-  resultPage: number;
   currentQueryPages: Map<number, ReadonlyArray<any>>;
 }
 

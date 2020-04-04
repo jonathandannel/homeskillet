@@ -20,7 +20,9 @@ import { selectCity, setAllCities, setLoading } from "./actions/appActions";
 import {
   setSearchFilter,
   setFilterType,
-  setAllCityRestaurants
+  setAllCityRestaurants,
+  setResultPage,
+  clearSearch
 } from "./actions/searchActions";
 import { queryAllCities } from "./api";
 
@@ -36,7 +38,9 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   setSearchFilter: (q: string) => dispatch(setSearchFilter(q)),
   setFilterType: (f: FilterType) => dispatch(setFilterType(f)),
   setAllCityRestaurants: (r: ReadonlyArray<any>) =>
-    dispatch(setAllCityRestaurants(r))
+    dispatch(setAllCityRestaurants(r)),
+  setResultPage: (n: number) => dispatch(setResultPage(n)),
+  clearSearch: () => dispatch(clearSearch())
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -56,7 +60,9 @@ const App: React.FC<IProps & ConnProps> = ({
   setLoading,
   setSearchFilter,
   setAllCityRestaurants,
-  setFilterType
+  setFilterType,
+  setResultPage,
+  clearSearch
 }): ReactElement => {
   const styles = appStyles();
 
@@ -90,7 +96,9 @@ const App: React.FC<IProps & ConnProps> = ({
           selectCity={selectCity}
           setSearchFilter={setSearchFilter}
           setFilterType={setFilterType}
+          setResultPage={setResultPage}
           setAllCityRestaurants={setAllCityRestaurants}
+          clearSearch={clearSearch}
         />
         <ResultList appState={appState} searchState={searchState} />
       </Container>

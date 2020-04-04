@@ -18,19 +18,23 @@ interface IProps {
 
 const ResultList: React.FC<IProps> = ({
   appState: { selectedCity },
-  searchState: { currentQueryResults, currentQueryPages, resultPage }
+  searchState: { currentQueryResults, currentQueryPages }
 }): any => {
   const styles = resultListStyles();
   const [shownResults, setShownResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (currentQueryResults && currentPage) {
-      console.log(currentQueryPages);
+    if (currentQueryResults.length && currentPage) {
+      setShownResults([...currentQueryPages.get(currentPage)]);
     }
-  }, [currentQueryPages, currentPage]);
+  }, [currentQueryResults, currentQueryPages, currentPage]);
 
-  const incPage = (val: number): void => setCurrentPage(currentPage + val);
+  const incPage = (val: number): void => {
+    if (currentPage + val > -1 && currentPage + val <= currentQueryPages.size) {
+      setCurrentPage(currentPage + val);
+    }
+  };
 
   return (
     <Fragment>

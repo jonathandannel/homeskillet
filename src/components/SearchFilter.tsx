@@ -24,15 +24,19 @@ interface IProps {
   selectCity: (c: string) => Action;
   setAllCityRestaurants: (r: ReadonlyArray<Restaurant>) => Action;
   setSearchFilter: (q: string) => Action;
+  setResultPage: (n: number) => Action;
   setFilterType: (f: FilterType) => Action;
+  clearSearch: () => Action;
 }
 
 const SearchFilter = ({
   appState: { allCities, selectedCity },
   searchState: { allCityRestaurants, resultCount },
   setLoading,
+  clearSearch,
   selectCity,
   setAllCityRestaurants,
+  setResultPage,
   setSearchFilter,
   setFilterType
 }: IProps) => {
@@ -57,6 +61,7 @@ const SearchFilter = ({
     selectCity(c);
     setCityQuery("");
     setCityList([]);
+    setAllCityRestaurants(null);
     getAllRestaurants(c).then(r => setAllCityRestaurants(r));
   };
 

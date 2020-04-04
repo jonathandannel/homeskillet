@@ -27,3 +27,8 @@ export const setResultPage = (page: number): Action => ({
   type: SET_RESULT_PAGE,
   value: page
 });
+
+export const clearSearch = (): Action => ({
+  type: SET_RESULT_PAGE,
+  value: null
+});

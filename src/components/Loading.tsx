@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { AppState } from "../interfaces";
 import { LinearProgress } from "@material-ui/core";
 import { loadingStyles } from "./styles";

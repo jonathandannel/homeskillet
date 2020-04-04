@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Container, Paper, Typography, Badge, Button } from "@material-ui/core";
+import { Container, Typography, Badge, Button } from "@material-ui/core";
 import { AppState, SearchState, Action, Restaurant } from "../interfaces";
 import { resultListStyles } from "./styles";
 import ResultCard from "./Result";

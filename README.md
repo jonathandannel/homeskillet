@@ -6,7 +6,7 @@ A takehome assignment for an awesome company that I want to work for! A Typescri
 
 # Run locally
 
-`npm run start`
+`npm run start` => `localhost:3000` will open in your browser.
 
 # Deployed
 

@@ -14,7 +14,6 @@ export const paginate = (data: ReadonlyArray<any>): Map<number, []> => {
     const startIndex = currentPage * perPage;
     const endIndex = startIndex + perPage;
     const slice = data.slice(startIndex, endIndex);
-    debugger;
     if (slice.length) {
       pages.set(currentPage + 1, data.slice(startIndex, endIndex));
     }

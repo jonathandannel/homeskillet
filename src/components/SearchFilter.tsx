@@ -50,30 +50,42 @@ const SearchFilter = ({
     setCityQuery(value);
     setTimeout(() => {
       setLoading(false);
-    }, 800);
+    }, 1000);
   };
 
   const chooseCity = (c: string): void => {
+    setLoading(true);
     selectCity(c);
     setCityList([]);
     setAllCityRestaurants(null);
     getAllRestaurants(c).then((r) => setAllCityRestaurants(r));
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   const handleFilterChange = ({
     target: { value },
   }: ChangeEvent<any>): void => {
+    setLoading(true);
     setFilterType(value);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   const handleFilterQuery = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>): void => {
+    setLoading(true);
     if (value === "") {
       clearFilter();
       setFilterType(null);
     }
     setFilterQuery(value);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {

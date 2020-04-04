@@ -65,6 +65,8 @@ const SearchFilter = ({
     getAllRestaurants(c).then(r => setAllCityRestaurants(r));
   };
 
+  const handleFilterType = (f: FilterType): void => {};
+
   useEffect(() => {
     if (cityQuery.length > 2) {
       const matches: Array<string> = allCities.filter(
@@ -93,7 +95,11 @@ const SearchFilter = ({
             ></TextField>
           </div>
           <div className={styles.flex}>
-            <NearMe className={styles.iconRefine}></NearMe>
+            <NearMe
+              className={`${styles.iconRefine} ${
+                selectedCity === null ? styles.disabled : ""
+              }`}
+            ></NearMe>
             <TextField
               disabled={selectedCity === null}
               label="Refine"

@@ -23,6 +23,8 @@ const ResultList: React.FC<IProps> = ({
   const styles = resultListStyles();
   const [shownResults, setShownResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const backEnabled = currentPage - 1 > 0;
+  const forwardEnabled = currentPage + 1 < currentQueryPages.size;
 
   useEffect(() => {
     if (currentQueryResults.length && currentPage) {
@@ -31,7 +33,7 @@ const ResultList: React.FC<IProps> = ({
   }, [currentQueryResults, currentQueryPages, currentPage]);
 
   const incPage = (val: number): void => {
-    if (currentPage + val > -1 && currentPage + val <= currentQueryPages.size) {
+    if (currentPage + val > 0 && currentPage + val <= currentQueryPages.size) {
       setCurrentPage(currentPage + val);
     }
   };
@@ -39,8 +41,9 @@ const ResultList: React.FC<IProps> = ({
   return (
     <Fragment>
       {selectedCity && (
-        <Container>
+        <Container className={styles.resultTitle}>
           <Badge
+            className={styles.badge}
             max={999}
             color="primary"
             badgeContent={currentQueryResults.length}
@@ -50,11 +53,29 @@ const ResultList: React.FC<IProps> = ({
               variant="h4"
             >{`${selectedCity}`}</Typography>
           </Badge>
-          <Button onClick={() => incPage(-1)}>Previous page</Button>
-          <Button onClick={() => incPage(1)}>Next page</Button>
+          <div>
+            <Button
+              className={styles.paginationButton}
+              variant="contained"
+              color="primary"
+              disabled={!backEnabled}
+              onClick={() => incPage(-1)}
+            >
+              Previous page
+            </Button>
+            <Button
+              className={styles.paginationButton}
+              variant="contained"
+              color="primary"
+              disabled={!forwardEnabled}
+              onClick={() => incPage(1)}
+            >
+              Next page
+            </Button>
+          </div>
         </Container>
       )}
-      <Paper className={styles.paper}>
+      <Paper elevation={8} className={styles.paper}>
         {shownResults
           ? [...shownResults].map(v => <ResultCard result={v} />)
           : null}

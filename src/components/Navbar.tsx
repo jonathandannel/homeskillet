@@ -1,6 +1,7 @@
 import React from "react";
 import { AppState } from "../interfaces";
 import { AppBar, Typography, Container } from "@material-ui/core";
+import { Language } from "@material-ui/icons";
 import { navbarStyles } from "./styles";
 
 interface IProps {
@@ -16,9 +17,16 @@ const Navbar = ({ appState: { selectedCity } }: IProps) => {
           <Typography className={styles.text} color="primary" variant="h5">
             ristorio
           </Typography>
-          <Typography color="primary" variant="caption">
-            {selectedCity ? selectedCity : "Select a city"}
-          </Typography>
+          <div className={styles.location}>
+            <Language className={styles.locationIcon} color="primary" />
+            <Typography
+              className={styles.locationText}
+              color="primary"
+              variant="body2"
+            >
+              {selectedCity ? selectedCity : "Select a city"}
+            </Typography>
+          </div>
         </div>
       </Container>
     </AppBar>

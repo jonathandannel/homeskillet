@@ -100,7 +100,9 @@ const App: React.FC<IProps & ConnProps> = ({
           setAllCityRestaurants={setAllCityRestaurants}
           clearSearch={clearSearch}
         />
-        <ResultList appState={appState} searchState={searchState} />
+        {searchState.allCityRestaurants.length ? (
+          <ResultList appState={appState} searchState={searchState} />
+        ) : null}
       </Container>
     </ThemeProvider>
   );

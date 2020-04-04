@@ -2,6 +2,8 @@
 
 - I spent about 2 days going at a leisurely pace. If I had more time, I would have worked on the mobile responsiveness as well as some of the architectural decisions regarding my state management. I would also add a lot more flair to the UI with features such as better restaurant card interactivity.
 
+- Today, Saturday, April 4 is my birthday. I am pushing my repo and deploying without writing tests because you only turn 30 once.
+
 ###### 2. What was the most useful feature that was added to the latest version of your chosen language? Please include a snippet of code that shows how you've used it.
 
 - I love destructuring. Whenever I use other languages, like Python, it is the feature that I sorely miss. It's a really great way to quickly access the properties of objects when you already know what they are.

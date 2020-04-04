@@ -7,7 +7,6 @@ import {
 } from "../constants/actionTypes";
 import { SearchState, Action } from "../interfaces";
 import { paginate } from "./util";
-import { setAllCityRestaurants } from "../actions/searchActions";
 
 const initialState: SearchState = {
   resultCount: 0,
@@ -49,13 +48,11 @@ const searchReducer = (state = initialState, action: Action): SearchState => {
         currentQueryPages: newCurrentQueryPages,
       };
     case FILTER_RESULTS: {
-      debugger;
       const f = state.searchFilterType;
       const q = state.searchFilter;
       const filtered = state.allCityRestaurants.filter((r) =>
         r[f].toLowerCase().includes(q.toLowerCase())
       );
-      debugger;
       return {
         ...state,
         resultCount: filtered.length,
@@ -64,6 +61,7 @@ const searchReducer = (state = initialState, action: Action): SearchState => {
       };
     }
     case CLEAR_FILTER: {
+      debugger;
       return {
         ...state,
         resultCount: state.allCityRestaurants.length,

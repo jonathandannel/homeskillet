@@ -1,4 +1,4 @@
-import React, { useEffect, ReactElement, Fragment } from "react";
+import React, { useEffect, ReactElement } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { Dispatch } from "redux";
 import {
@@ -20,8 +20,6 @@ import {
   setSearchFilter,
   setFilterType,
   setAllCityRestaurants,
-  setResultPage,
-  clearSearch,
   filterResults,
   clearFilter,
 } from "./actions/searchActions";
@@ -40,8 +38,6 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   setFilterType: (f: string) => dispatch(setFilterType(f)),
   setAllCityRestaurants: (r: ReadonlyArray<any>) =>
     dispatch(setAllCityRestaurants(r)),
-  setResultPage: (n: number) => dispatch(setResultPage(n)),
-  clearSearch: () => dispatch(clearSearch()),
   clearFilter: () => dispatch(clearFilter()),
   filterResults: () => dispatch(filterResults()),
 });
@@ -64,17 +60,11 @@ const App: React.FC<IProps & ConnProps> = ({
   setSearchFilter,
   setAllCityRestaurants,
   setFilterType,
-  setResultPage,
-  clearSearch,
+  clearFilter,
   filterResults,
 }): ReactElement => {
   const styles = appStyles();
 
-  useEffect(() => {
-    console.log(appState, searchState);
-  }, [appState, searchState]);
-
-  // Fetch all cities on load
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -100,10 +90,7 @@ const App: React.FC<IProps & ConnProps> = ({
           selectCity={selectCity}
           setSearchFilter={setSearchFilter}
           setFilterType={setFilterType}
-          setResultPage={setResultPage}
           setAllCityRestaurants={setAllCityRestaurants}
-          clearSearch={clearSearch}
-          filterResults={filterResults}
           clearFilter={clearFilter}
         />
         {searchState.allCityRestaurants.length ? (

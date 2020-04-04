@@ -1,20 +1,13 @@
-import React, { Fragment, useState, useEffect, ReactElement } from "react";
-import {
-  Container,
-  Paper,
-  Card,
-  Typography,
-  Badge,
-  Button,
-} from "@material-ui/core";
-import { AppState, SearchState } from "../interfaces";
+import React, { Fragment, useState, useEffect } from "react";
+import { Container, Paper, Typography, Badge, Button } from "@material-ui/core";
+import { AppState, SearchState, Action } from "../interfaces";
 import { resultListStyles } from "./styles";
 import ResultCard from "./Result";
 
 interface IProps {
   appState: AppState;
   searchState: SearchState;
-  filterResults: () => any;
+  filterResults: () => Action;
 }
 
 const ResultList: React.FC<IProps> = ({

@@ -8,11 +8,10 @@ import {
   RadioGroup,
   FormLabel,
   FormControlLabel,
-  Typography,
 } from "@material-ui/core";
 import { AppState, SearchState, Action, Restaurant } from "../interfaces";
 import { searchStyles } from "./styles";
-import { LocationOn, NearMe, Search } from "@material-ui/icons";
+import { LocationOn, NearMe } from "@material-ui/icons";
 import { getAllRestaurants } from "../api";
 
 interface IProps {
@@ -22,28 +21,17 @@ interface IProps {
   selectCity: (c: string) => Action;
   setAllCityRestaurants: (r: ReadonlyArray<Restaurant>) => Action;
   setSearchFilter: (q: string) => Action;
-  setResultPage: (n: number) => Action;
   setFilterType: (f: string) => Action;
-  clearSearch: () => Action;
   clearFilter: () => Action;
-  filterResults: () => Action;
 }
 
 const SearchFilter = ({
   appState: { allCities, selectedCity },
-  searchState: {
-    allCityRestaurants,
-    resultCount,
-    searchFilter,
-    searchFilterType,
-  },
+  searchState: { searchFilterType },
   setLoading,
-  clearSearch,
   selectCity,
   setAllCityRestaurants,
-  setResultPage,
   clearFilter,
-  filterResults,
   setSearchFilter,
   setFilterType,
 }: IProps) => {
@@ -67,7 +55,6 @@ const SearchFilter = ({
 
   const chooseCity = (c: string): void => {
     selectCity(c);
-    setCityQuery("");
     setCityList([]);
     setAllCityRestaurants(null);
     getAllRestaurants(c).then((r) => setAllCityRestaurants(r));
@@ -82,6 +69,10 @@ const SearchFilter = ({
   const handleFilterQuery = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>): void => {
+    if (value === "") {
+      clearFilter();
+      setFilterType(null);
+    }
     setFilterQuery(value);
   };
 

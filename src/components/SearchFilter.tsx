@@ -108,7 +108,10 @@ const SearchFilter = ({
   return (
     <Fragment>
       <Container className={styles.main}>
-        <FormControl className={styles.formControl}>
+        <FormControl
+          style={{ flexDirection: "row !important" }}
+          className={styles.formControl}
+        >
           <div className={styles.flex}>
             <LocationOn className={styles.iconCity}></LocationOn>
             <TextField

@@ -61,8 +61,8 @@ export const searchStyles = makeStyles(({ palette }) => ({
   formControl: {
     width: "75%",
     display: "flex",
-    marginBottom: "1rem",
     flexDirection: "row",
+    marginBottom: "1rem",
   },
   input: {
     marginBottom: "2rem",

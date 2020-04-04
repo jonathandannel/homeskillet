@@ -4,4 +4,4 @@
 
 # Deployed
 
-[https://infallible-gates-6b3401.netlify.com/]
+https://infallible-gates-6b3401.netlify.com/

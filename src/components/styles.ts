@@ -60,8 +60,8 @@ export const searchStyles = makeStyles(({ palette }) => ({
   },
   formControl: {
     width: "75%",
-    display: "flex",
     flexDirection: "row",
+    display: "flex",
     marginBottom: "1rem",
   },
   input: {
@@ -84,6 +84,9 @@ export const searchStyles = makeStyles(({ palette }) => ({
     marginRight: "1rem",
   },
   flex: {
+    display: "flex",
+  },
+  aligned: {
     display: "flex",
     width: "45%",
     marginRight: "2rem",

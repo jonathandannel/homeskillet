@@ -108,37 +108,36 @@ const SearchFilter = ({
   return (
     <Fragment>
       <Container className={styles.main}>
-        <FormControl
-          style={{ flexDirection: "row !important" }}
-          className={styles.formControl}
-        >
+        <FormControl className={styles.formControl}>
           <div className={styles.flex}>
-            <LocationOn className={styles.iconCity}></LocationOn>
-            <TextField
-              required
-              color="secondary"
-              value={cityQuery}
-              onChange={handleCityInput}
-              label="City"
-              variant="outlined"
-              className={styles.input}
-            ></TextField>
-          </div>
-          <div className={styles.flex}>
-            <NearMe
-              className={`${styles.iconRefine} ${
-                selectedCity === null ? styles.disabled : ""
-              }`}
-            ></NearMe>
-            <TextField
-              disabled={selectedCity === null}
-              label="Refine"
-              color="secondary"
-              variant="outlined"
-              value={filterQuery}
-              onChange={handleFilterQuery}
-              className={styles.input}
-            ></TextField>
+            <div className={styles.aligned}>
+              <LocationOn className={styles.iconCity}></LocationOn>
+              <TextField
+                required
+                color="secondary"
+                value={cityQuery}
+                onChange={handleCityInput}
+                label="City"
+                variant="outlined"
+                className={styles.input}
+              ></TextField>
+            </div>
+            <div className={styles.aligned}>
+              <NearMe
+                className={`${styles.iconRefine} ${
+                  selectedCity === null ? styles.disabled : ""
+                }`}
+              ></NearMe>
+              <TextField
+                disabled={selectedCity === null}
+                label="Refine"
+                color="secondary"
+                variant="outlined"
+                value={filterQuery}
+                onChange={handleFilterQuery}
+                className={styles.input}
+              ></TextField>
+            </div>
           </div>
         </FormControl>
         <FormControl

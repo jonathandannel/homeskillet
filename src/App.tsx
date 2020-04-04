@@ -6,8 +6,7 @@ import {
   AppState,
   SearchState,
   Action,
-  FilterType,
-  Restaurant
+  Restaurant,
 } from "./interfaces";
 import { ThemeProvider, Container, Typography } from "@material-ui/core";
 import Navbar from "./components/Navbar";
@@ -22,13 +21,15 @@ import {
   setFilterType,
   setAllCityRestaurants,
   setResultPage,
-  clearSearch
+  clearSearch,
+  filterResults,
+  clearFilter,
 } from "./actions/searchActions";
 import { queryAllCities } from "./api";
 
 const mapStateToProps = ({ app, search }: RootState) => ({
   appState: app,
-  searchState: search
+  searchState: search,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
@@ -36,11 +37,13 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   selectCity: (c: string) => dispatch(selectCity(c)),
   setLoading: (b: boolean) => dispatch(setLoading(b)),
   setSearchFilter: (q: string) => dispatch(setSearchFilter(q)),
-  setFilterType: (f: FilterType) => dispatch(setFilterType(f)),
+  setFilterType: (f: string) => dispatch(setFilterType(f)),
   setAllCityRestaurants: (r: ReadonlyArray<any>) =>
     dispatch(setAllCityRestaurants(r)),
   setResultPage: (n: number) => dispatch(setResultPage(n)),
-  clearSearch: () => dispatch(clearSearch())
+  clearSearch: () => dispatch(clearSearch()),
+  clearFilter: () => dispatch(clearFilter()),
+  filterResults: () => dispatch(filterResults()),
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -62,7 +65,8 @@ const App: React.FC<IProps & ConnProps> = ({
   setAllCityRestaurants,
   setFilterType,
   setResultPage,
-  clearSearch
+  clearSearch,
+  filterResults,
 }): ReactElement => {
   const styles = appStyles();
 
@@ -76,7 +80,7 @@ const App: React.FC<IProps & ConnProps> = ({
     setTimeout(() => {
       setLoading(false);
     }, 1200);
-    queryAllCities().then(cities => {
+    queryAllCities().then((cities) => {
       if (cities) setAllCities(cities);
     });
   }, []);
@@ -99,9 +103,15 @@ const App: React.FC<IProps & ConnProps> = ({
           setResultPage={setResultPage}
           setAllCityRestaurants={setAllCityRestaurants}
           clearSearch={clearSearch}
+          filterResults={filterResults}
+          clearFilter={clearFilter}
         />
         {searchState.allCityRestaurants.length ? (
-          <ResultList appState={appState} searchState={searchState} />
+          <ResultList
+            filterResults={filterResults}
+            appState={appState}
+            searchState={searchState}
+          />
         ) : null}
       </Container>
     </ThemeProvider>

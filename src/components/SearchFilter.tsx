@@ -4,15 +4,13 @@ import {
   TextField,
   Container,
   Button,
-  Typography
+  Radio,
+  RadioGroup,
+  FormLabel,
+  FormControlLabel,
+  Typography,
 } from "@material-ui/core";
-import {
-  AppState,
-  SearchState,
-  FilterType,
-  Action,
-  Restaurant
-} from "../interfaces";
+import { AppState, SearchState, Action, Restaurant } from "../interfaces";
 import { searchStyles } from "./styles";
 import { LocationOn, NearMe, Search } from "@material-ui/icons";
 import { getAllRestaurants } from "../api";
@@ -25,27 +23,37 @@ interface IProps {
   setAllCityRestaurants: (r: ReadonlyArray<Restaurant>) => Action;
   setSearchFilter: (q: string) => Action;
   setResultPage: (n: number) => Action;
-  setFilterType: (f: FilterType) => Action;
+  setFilterType: (f: string) => Action;
   clearSearch: () => Action;
+  clearFilter: () => Action;
+  filterResults: () => Action;
 }
 
 const SearchFilter = ({
   appState: { allCities, selectedCity },
-  searchState: { allCityRestaurants, resultCount },
+  searchState: {
+    allCityRestaurants,
+    resultCount,
+    searchFilter,
+    searchFilterType,
+  },
   setLoading,
   clearSearch,
   selectCity,
   setAllCityRestaurants,
   setResultPage,
+  clearFilter,
+  filterResults,
   setSearchFilter,
-  setFilterType
+  setFilterType,
 }: IProps) => {
   const styles = searchStyles();
   const [cityQuery, setCityQuery] = useState("");
+  const [filterQuery, setFilterQuery] = useState("");
   const [cityList, setCityList] = useState([]);
 
   const handleCityInput = ({
-    target: { value }
+    target: { value },
   }: ChangeEvent<HTMLInputElement>): void => {
     if (value === "") {
       setCityList([]);
@@ -62,15 +70,29 @@ const SearchFilter = ({
     setCityQuery("");
     setCityList([]);
     setAllCityRestaurants(null);
-    getAllRestaurants(c).then(r => setAllCityRestaurants(r));
+    getAllRestaurants(c).then((r) => setAllCityRestaurants(r));
   };
 
-  const handleFilterType = (f: FilterType): void => {};
+  const handleFilterChange = ({
+    target: { value },
+  }: ChangeEvent<any>): void => {
+    setFilterType(value);
+  };
+
+  const handleFilterQuery = ({
+    target: { value },
+  }: ChangeEvent<HTMLInputElement>): void => {
+    setFilterQuery(value);
+  };
+
+  useEffect(() => {
+    setSearchFilter(filterQuery);
+  }, [filterQuery]);
 
   useEffect(() => {
     if (cityQuery.length > 2) {
       const matches: Array<string> = allCities.filter(
-        q =>
+        (q) =>
           q.slice(0, cityQuery.length).toLowerCase() ===
           cityQuery.trim().toLowerCase()
       );
@@ -105,13 +127,27 @@ const SearchFilter = ({
               label="Refine"
               color="secondary"
               variant="outlined"
+              value={filterQuery}
+              onChange={handleFilterQuery}
               className={styles.input}
             ></TextField>
           </div>
         </FormControl>
+        <FormControl disabled={selectedCity === null} component="fieldset">
+          <FormLabel component="legend">Filter by</FormLabel>
+          <RadioGroup onChange={handleFilterChange} value={searchFilterType}>
+            <FormControlLabel value="name" control={<Radio />} label="Name" />
+            <FormControlLabel value="area" control={<Radio />} label="Area" />
+            <FormControlLabel
+              value="address"
+              control={<Radio />}
+              label="Address"
+            />
+          </RadioGroup>
+        </FormControl>
       </Container>
       <Container className={styles.cityList}>
-        {cityList.map(c => (
+        {cityList.map((c) => (
           <Button
             className={styles.cityButton}
             onClick={() => chooseCity(c)}

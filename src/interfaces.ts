@@ -11,22 +11,16 @@ export interface AppState {
 
 export interface SearchState {
   resultCount: number;
+  searchFilter: string;
+  searchFilterType: string | null;
   allCityRestaurants: any[] | [];
   currentQueryResults: any[] | [];
-  searchFilter: string;
-  searchFilterType: FilterType | null;
   currentQueryPages: Map<number, ReadonlyArray<any>>;
 }
 
 export interface Action {
   type: string;
   value: any;
-}
-
-export enum FilterType {
-  Name,
-  Address,
-  Area
 }
 
 export interface Restaurant {

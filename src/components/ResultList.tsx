@@ -72,15 +72,17 @@ const ResultList: React.FC<IProps> = ({
             >{`${selectedCity}`}</Typography>
           </Badge>
           <div>
-            <Button
-              className={styles.paginationButton}
-              variant="contained"
-              color="primary"
-              disabled={!backEnabled}
-              onClick={() => incPage(-1)}
-            >
-              Previous page
-            </Button>
+            <span className={styles.marginRight}>
+              <Button
+                className={styles.paginationButton}
+                variant="contained"
+                color="primary"
+                disabled={!backEnabled}
+                onClick={() => incPage(-1)}
+              >
+                Previous page
+              </Button>
+            </span>
             <Button
               className={styles.paginationButton}
               variant="contained"

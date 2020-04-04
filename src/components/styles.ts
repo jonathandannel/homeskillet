@@ -114,6 +114,9 @@ export const resultListStyles = makeStyles(({ palette }) => ({
   selectedCity: {
     color: "#525252 !important",
   },
+  marginRight: {
+    marginRight: "1rem",
+  },
   resultTitle: {
     display: "flex",
     justifyContent: "space-between",

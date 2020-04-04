@@ -59,7 +59,7 @@ export const searchStyles = makeStyles(({ palette }) => ({
     opacity: 0.5,
   },
   formControl: {
-    width: "75%",
+    width: "100%",
     flexDirection: "row",
     display: "flex",
     marginBottom: "1rem",
@@ -121,6 +121,7 @@ export const resultListStyles = makeStyles(({ palette }) => ({
   },
   paginationButton: {
     marginRight: "1rem",
+    marginLeft: "1rem",
   },
   badge: {
     "& > .MuiBadge-badge": {

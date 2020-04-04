@@ -1,7 +1,8 @@
 import {
   SET_SEARCH_FILTER,
   SET_FILTER_TYPE,
-  SET_ALL_CITY_RESTAURANTS
+  SET_ALL_CITY_RESTAURANTS,
+  SET_RESULT_PAGE
 } from "../constants/actionTypes";
 
 import { Action, FilterType, Restaurant } from "../interfaces";
@@ -20,4 +21,9 @@ export const setAllCityRestaurants = (
 ): Action => ({
   type: SET_ALL_CITY_RESTAURANTS,
   value: restaurants
+});
+
+export const setResultPage = (page: number): Action => ({
+  type: SET_RESULT_PAGE,
+  value: page
 });

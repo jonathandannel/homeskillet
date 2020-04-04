@@ -99,7 +99,7 @@ const SearchFilter = ({
           </div>
         </FormControl>
       </Container>
-      <Container>
+      <Container className={styles.cityList}>
         {cityList.map(c => (
           <Button
             className={styles.cityButton}

@@ -1,5 +1,12 @@
 import React, { Fragment, useState, useEffect, ReactElement } from "react";
-import { Container, Paper, Card, Typography, Badge } from "@material-ui/core";
+import {
+  Container,
+  Paper,
+  Card,
+  Typography,
+  Badge,
+  Button
+} from "@material-ui/core";
 import { AppState, SearchState } from "../interfaces";
 import { resultListStyles } from "./styles";
 import ResultCard from "./Result";
@@ -11,33 +18,42 @@ interface IProps {
 
 const ResultList: React.FC<IProps> = ({
   appState: { selectedCity },
-  searchState: { currentQueryResults }
+  searchState: { currentQueryResults, currentQueryPages, resultPage }
 }): any => {
   const styles = resultListStyles();
-  const [results, setResults] = useState([]);
+  const [shownResults, setShownResults] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (currentQueryResults) {
-      setResults(currentQueryResults);
+    if (currentQueryResults && currentPage) {
+      console.log(currentQueryPages);
     }
-  }, [currentQueryResults]);
+  }, [currentQueryPages, currentPage]);
+
+  const incPage = (val: number): void => setCurrentPage(currentPage + val);
 
   return (
     <Fragment>
       {selectedCity && (
-        <Badge
-          max={999}
-          color="primary"
-          badgeContent={currentQueryResults.length}
-        >
-          <Typography
-            className={styles.selectedCity}
-            variant="h4"
-          >{`${selectedCity}`}</Typography>
-        </Badge>
+        <Container>
+          <Badge
+            max={999}
+            color="primary"
+            badgeContent={currentQueryResults.length}
+          >
+            <Typography
+              className={styles.selectedCity}
+              variant="h4"
+            >{`${selectedCity}`}</Typography>
+          </Badge>
+          <Button onClick={() => incPage(-1)}>Previous page</Button>
+          <Button onClick={() => incPage(1)}>Next page</Button>
+        </Container>
       )}
       <Paper className={styles.paper}>
-        {results ? results.map(v => <ResultCard result={v} />) : null}
+        {shownResults
+          ? [...shownResults].map(v => <ResultCard result={v} />)
+          : null}
       </Paper>
     </Fragment>
   );

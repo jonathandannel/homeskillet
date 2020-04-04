@@ -138,7 +138,11 @@ const SearchFilter = ({
             ></TextField>
           </div>
         </FormControl>
-        <FormControl disabled={selectedCity === null} component="fieldset">
+        <FormControl
+          className={styles.radioGroup}
+          disabled={selectedCity === null}
+          component="fieldset"
+        >
           <FormLabel component="legend">Filter by</FormLabel>
           <RadioGroup onChange={handleFilterChange} value={searchFilterType}>
             <FormControlLabel value="name" control={<Radio />} label="Name" />

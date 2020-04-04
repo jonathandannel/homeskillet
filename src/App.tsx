@@ -100,6 +100,7 @@ const App: React.FC<IProps & ConnProps> = ({
         {searchState.allCityRestaurants.length ? (
           <ResultList
             filterResults={filterResults}
+            setLoading={setLoading}
             appState={appState}
             searchState={searchState}
           />

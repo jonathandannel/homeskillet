@@ -76,15 +76,15 @@ const searchReducer = (state = initialState, action: Action): SearchState => {
 
 const paginate = (data: ReadonlyArray<Restaurant>): Map<number, []> => {
   const pages = new Map();
+  const perPage = 6;
 
-  if (data.length <= 25) {
+  if (data.length <= perPage) {
     pages.set(1, data);
     return pages;
   }
 
   let currentPage = 0;
-  const pageCount = Math.ceil(data.length / 25);
-  const perPage = 25;
+  const pageCount = Math.ceil(data.length / perPage);
 
   while (currentPage !== pageCount + 1) {
     const startIndex = currentPage * perPage;

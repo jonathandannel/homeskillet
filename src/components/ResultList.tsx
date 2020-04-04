@@ -8,6 +8,7 @@ interface IProps {
   appState: AppState;
   searchState: SearchState;
   filterResults: () => Action;
+  setLoading: (b: boolean) => Action;
 }
 
 const ResultList: React.FC<IProps> = ({
@@ -19,6 +20,7 @@ const ResultList: React.FC<IProps> = ({
     searchFilterType,
   },
   filterResults,
+  setLoading,
 }): any => {
   const styles = resultListStyles();
   const [shownResults, setShownResults] = useState<
@@ -38,10 +40,20 @@ const ResultList: React.FC<IProps> = ({
     }
   }, [searchFilter, searchFilterType]);
 
+  useEffect(() => {
+    if (searchFilter) {
+      setCurrentPage(1);
+    }
+  }, [searchFilter]);
+
   const incPage = (val: number): void => {
+    setLoading(true);
     if (currentPage + val > 0 && currentPage + val <= currentQueryPages.size) {
       setCurrentPage(currentPage + val);
     }
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   return (
@@ -81,11 +93,9 @@ const ResultList: React.FC<IProps> = ({
           </div>
         </Container>
       )}
-      <Paper elevation={8} className={styles.paper}>
-        {shownResults
-          ? [...shownResults].map((v) => <ResultCard result={v} />)
-          : null}
-      </Paper>
+      {shownResults
+        ? [...shownResults].map((v) => <ResultCard result={v} />)
+        : null}
     </Fragment>
   );
 };

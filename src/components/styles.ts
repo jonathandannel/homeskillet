@@ -35,7 +35,7 @@ export const navbarStyles = makeStyles(({ palette }) => ({
 export const appStyles = makeStyles(({ palette }) => ({
   introText: {
     color: "#525252",
-    marginBottom: "3rem",
+    marginBottom: "4rem",
     paddingLeft: "0.25rem",
   },
 }));
@@ -53,17 +53,19 @@ export const searchStyles = makeStyles(({ palette }) => ({
     display: "flex",
     width: "100%",
     paddingLeft: "1px",
+    marginBottom: "3rem",
   },
   disabled: {
     opacity: 0.5,
   },
   formControl: {
+    width: "100%",
     display: "flex",
     flexDirection: "row",
   },
   input: {
     marginBottom: "2rem",
-    width: "25vw",
+    width: "100%",
     "& > .Mui-disabled": {
       opacity: 0.6,
     },
@@ -82,7 +84,8 @@ export const searchStyles = makeStyles(({ palette }) => ({
   },
   flex: {
     display: "flex",
-    marginRight: "3rem",
+    width: "45%",
+    marginRight: "2rem",
   },
   cityList: {
     marginBottom: "2rem",
@@ -90,14 +93,17 @@ export const searchStyles = makeStyles(({ palette }) => ({
   cityButton: {
     margin: "1rem",
   },
+  radioGroup: {
+    transform: "translateX(0.5rem)",
+  },
 }));
 
 export const resultListStyles = makeStyles(({ palette }) => ({
   paper: {
-    height: "50vw",
-    marginTop: "2rem",
+    height: "120vh",
+    marginTop: "4rem",
     padding: "3rem",
-    marginBottom: "2rem",
+    marginBottom: "4rem",
     justifyContent: "flex",
     flexWrap: "wrap",
   },
@@ -107,7 +113,7 @@ export const resultListStyles = makeStyles(({ palette }) => ({
   resultTitle: {
     display: "flex",
     justifyContent: "space-between",
-    marginBottom: "1rem",
+    marginBottom: "2rem",
   },
   paginationButton: {
     marginRight: "1rem",
@@ -121,7 +127,28 @@ export const resultListStyles = makeStyles(({ palette }) => ({
 
 export const resultCardStyles = makeStyles(() => ({
   main: {
-    margin: "2rem",
-    padding: "1rem",
+    marginTop: "1rem",
+    marginBottom: "1rem",
+    padding: "1.5rem",
+    display: "flex",
+  },
+  info: {
+    display: "flex",
+  },
+  avatar: {
+    transform: "translateY(1rem)",
+    marginRight: "1rem",
+  },
+  content: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  caption: {
+    display: "flex",
+    paddingTop: "0.25rem",
+  },
+  action: {
+    paddingTop: "1rem",
+    marginRight: "1rem",
   },
 }));

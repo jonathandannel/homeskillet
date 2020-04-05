@@ -36,15 +36,10 @@ const ResultList: React.FC<IProps> = ({
 
   useEffect(() => {
     if (searchFilter && searchFilterType) {
+      setCurrentPage(1);
       filterResults();
     }
   }, [searchFilter, searchFilterType]);
-
-  useEffect(() => {
-    if (searchFilter) {
-      setCurrentPage(1);
-    }
-  }, [searchFilter]);
 
   const incPage = (val: number): void => {
     setLoading(true);

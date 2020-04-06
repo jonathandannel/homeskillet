@@ -92,6 +92,7 @@ export const searchStyles = makeStyles(({ palette }) => ({
     marginRight: "2rem",
   },
   cityList: {
+    display: "flex",
     marginBottom: "2rem",
   },
   marginRight: {

@@ -105,6 +105,7 @@ export const searchStyles = makeStyles(({ palette, breakpoints }) => ({
     marginRight: "2rem",
     "@media (max-width: 600px)": {
       width: "100%",
+      marginBottom: "1rem",
     },
   },
   cityList: {
@@ -119,13 +120,13 @@ export const searchStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   formLabel: {
     "@media (max-width: 600px)": {
-      transform: "translateY(2rem)",
+      transform: "translateY(1rem)",
     },
   },
   radioGroup: {
     "@media (max-width: 600px)": {
       marginTop: "2rem",
-      transform: "translateY(2rem)",
+      transform: "translateY(1rem)",
     },
     transform: "translateX(0.5rem)",
   },

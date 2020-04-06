@@ -145,8 +145,14 @@ const SearchFilter = ({
           disabled={selectedCity === null}
           component="fieldset"
         >
-          <FormLabel component="legend">Filter by</FormLabel>
-          <RadioGroup onChange={handleFilterChange} value={searchFilterType}>
+          <FormLabel className={styles.formLabel} component="legend">
+            Filter by
+          </FormLabel>
+          <RadioGroup
+            className={styles.radioGroup}
+            onChange={handleFilterChange}
+            value={searchFilterType}
+          >
             <FormControlLabel value="name" control={<Radio />} label="Name" />
             <FormControlLabel value="area" control={<Radio />} label="Area" />
             <FormControlLabel

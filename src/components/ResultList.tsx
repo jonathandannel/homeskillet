@@ -59,7 +59,7 @@ const ResultList: React.FC<IProps> = ({
             className={styles.badge}
             max={999}
             color="primary"
-            badgeContent={currentQueryResults.length}
+            badgeContent={currentQueryResults.length || 0}
           >
             <Typography
               className={styles.selectedCity}

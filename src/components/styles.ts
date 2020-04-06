@@ -1,7 +1,4 @@
 import { makeStyles } from "@material-ui/core";
-import createBreakpoints, {
-  Breakpoint,
-} from "@material-ui/core/styles/createBreakpoints";
 
 export const navbarStyles = makeStyles(({ palette }) => ({
   main: {
@@ -40,6 +37,9 @@ export const appStyles = makeStyles(({ palette }) => ({
     color: "#525252",
     marginBottom: "4rem",
     paddingLeft: "0.25rem",
+  },
+  main: {
+    marginBottom: "3rem",
   },
 }));
 export const loadingStyles = makeStyles(({ palette }) => ({

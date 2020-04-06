@@ -83,7 +83,7 @@ const App: React.FC<IProps & ConnProps> = ({
     <ThemeProvider theme={theme}>
       <Navbar appState={appState} />
       <Loading appState={appState} />
-      <Container>
+      <Container className={styles.main}>
         <Typography variant="h2" className={styles.introText}>
           Find the food you love.
         </Typography>

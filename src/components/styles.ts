@@ -126,7 +126,6 @@ export const searchStyles = makeStyles(({ palette, breakpoints }) => ({
   radioGroup: {
     "@media (max-width: 600px)": {
       marginTop: "2rem",
-      transform: "translateY(1rem)",
     },
     transform: "translateX(0.5rem)",
   },
@@ -140,6 +139,9 @@ export const resultListStyles = makeStyles(({ palette }) => ({
     marginBottom: "4rem",
     justifyContent: "flex",
     flexWrap: "wrap",
+    "@media (max-width: 900px)": {
+      marginBottom: "2.5rem",
+    },
   },
   selectedCity: {
     color: "#525252 !important",

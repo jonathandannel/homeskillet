@@ -166,9 +166,10 @@ const SearchFilter = ({
         </FormControl>
       </Container>
       <Container className={styles.cityList}>
-        {cityList.map((c) => (
+        {cityList.map((c, i) => (
           <div className={styles.marginRight}>
             <Button
+              key={i}
               className={styles.cityButton}
               onClick={() => chooseCity(c)}
               variant="contained"

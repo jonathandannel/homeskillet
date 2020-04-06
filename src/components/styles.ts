@@ -71,6 +71,7 @@ export const searchStyles = makeStyles(({ palette, breakpoints }) => ({
     marginBottom: "1rem",
     "@media (max-width: 600px)": {
       flexDirection: "column",
+      marginBottom: "2rem",
     },
   },
   input: {
@@ -118,7 +119,7 @@ export const searchStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   radioGroup: {
     "@media (max-width: 600px)": {
-      marginTop: "1rem",
+      marginTop: "2rem",
     },
     transform: "translateX(0.5rem)",
   },
@@ -137,7 +138,9 @@ export const resultListStyles = makeStyles(({ palette }) => ({
     color: "#525252 !important",
   },
   buttonContainer: {
-    //
+    "@media (max-width: 600px)": {
+      marginTop: "1rem",
+    },
   },
   marginRight: {
     marginRight: "1rem",

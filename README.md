@@ -4,7 +4,7 @@ A takehome assignment for an awesome company that I want to work for. A Typescri
 
 <img src=https://github.com/jonathandannel/ristorio/blob/master/screen_edit.png/>
 
-<img style="max-width: 50%; height: auto" src=https://github.com/jonathandannel/ristorio/blob/master/mobile.jpg/>
+<img src=https://github.com/jonathandannel/ristorio/blob/master/mobile_edit.jpg/>
 
 # Run locally
 

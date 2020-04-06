@@ -27,15 +27,17 @@ const ResultCard: React.FC<IProps> = ({ result }): ReactElement => {
           <Typography variant="body2">{result.address}</Typography>
           <Typography variant="body2">{result.area}</Typography>
         </Container>
-        <div className={styles.action}>
-          <IconButton onClick={makeCall} color="primary">
-            <Call />
-          </IconButton>
-        </div>
-        <div className={styles.action}>
-          <IconButton onClick={makeReservation} color="primary">
-            <EventAvailable />
-          </IconButton>
+        <div className={styles.actionContainer}>
+          <div className={styles.action}>
+            <IconButton onClick={makeCall} color="primary">
+              <Call />
+            </IconButton>
+          </div>
+          <div className={styles.action}>
+            <IconButton onClick={makeReservation} color="primary">
+              <EventAvailable />
+            </IconButton>
+          </div>
         </div>
       </Container>
     </Card>

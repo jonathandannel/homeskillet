@@ -1,4 +1,7 @@
 import { makeStyles } from "@material-ui/core";
+import createBreakpoints, {
+  Breakpoint,
+} from "@material-ui/core/styles/createBreakpoints";
 
 export const navbarStyles = makeStyles(({ palette }) => ({
   main: {
@@ -48,12 +51,15 @@ export const loadingStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-export const searchStyles = makeStyles(({ palette }) => ({
+export const searchStyles = makeStyles(({ palette, breakpoints }) => ({
   main: {
     display: "flex",
     width: "100%",
     paddingLeft: "1px",
     marginBottom: "3rem",
+    "@media (max-width: 600px)": {
+      flexDirection: "column",
+    },
   },
   disabled: {
     opacity: 0.5,
@@ -63,6 +69,9 @@ export const searchStyles = makeStyles(({ palette }) => ({
     flexDirection: "row",
     display: "flex",
     marginBottom: "1rem",
+    "@media (max-width: 600px)": {
+      flexDirection: "column",
+    },
   },
   input: {
     marginBottom: "2rem",
@@ -85,11 +94,17 @@ export const searchStyles = makeStyles(({ palette }) => ({
   },
   flex: {
     display: "flex",
+    "@media (max-width: 600px)": {
+      flexDirection: "column",
+    },
   },
   aligned: {
     display: "flex",
     width: "45%",
     marginRight: "2rem",
+    "@media (max-width: 600px)": {
+      width: "100%",
+    },
   },
   cityList: {
     display: "flex",
@@ -102,6 +117,9 @@ export const searchStyles = makeStyles(({ palette }) => ({
     margin: "1rem",
   },
   radioGroup: {
+    "@media (max-width: 600px)": {
+      marginTop: "1rem",
+    },
     transform: "translateX(0.5rem)",
   },
 }));
@@ -118,6 +136,9 @@ export const resultListStyles = makeStyles(({ palette }) => ({
   selectedCity: {
     color: "#525252 !important",
   },
+  buttonContainer: {
+    //
+  },
   marginRight: {
     marginRight: "1rem",
   },
@@ -125,12 +146,18 @@ export const resultListStyles = makeStyles(({ palette }) => ({
     display: "flex",
     justifyContent: "space-between",
     marginBottom: "2rem",
+    "@media (max-width: 600px)": {
+      flexDirection: "column",
+    },
   },
   paginationButton: {
     marginRight: "1rem",
     marginLeft: "1rem",
   },
   badge: {
+    "@media (max-width: 900px)": {
+      width: "fit-content",
+    },
     "& > .MuiBadge-badge": {
       transform: "scale(1) translate(120%, -20%)",
     },
@@ -154,13 +181,22 @@ export const resultCardStyles = makeStyles(() => ({
   content: {
     display: "flex",
     justifyContent: "space-between",
+    "@media (max-width: 600px)": {
+      flexDirection: "column",
+    },
   },
   caption: {
     display: "flex",
     paddingTop: "0.25rem",
   },
+  actionContainer: {
+    display: "flex",
+  },
   action: {
     paddingTop: "1rem",
     marginRight: "1rem",
+    "@media (min-width: 900px)": {
+      marginRight: 0,
+    },
   },
 }));

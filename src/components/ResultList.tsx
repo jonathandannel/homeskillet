@@ -66,7 +66,7 @@ const ResultList: React.FC<IProps> = ({
               variant="h4"
             >{`${selectedCity}`}</Typography>
           </Badge>
-          <div>
+          <div className={styles.buttonContainer}>
             <span className={styles.marginRight}>
               <Button
                 className={styles.paginationButton}
@@ -75,7 +75,7 @@ const ResultList: React.FC<IProps> = ({
                 disabled={!backEnabled}
                 onClick={() => incPage(-1)}
               >
-                Previous page
+                Prev
               </Button>
             </span>
             <Button
@@ -85,7 +85,7 @@ const ResultList: React.FC<IProps> = ({
               disabled={!forwardEnabled}
               onClick={() => incPage(1)}
             >
-              Next page
+              Next
             </Button>
           </div>
         </Container>

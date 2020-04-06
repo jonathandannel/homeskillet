@@ -90,9 +90,7 @@ const ResultList: React.FC<IProps> = ({
           </div>
         </Container>
       )}
-      {shownResults
-        ? [...shownResults].map((v) => <ResultCard result={v} />)
-        : null}
+      {shownResults && [...shownResults].map((v) => <ResultCard result={v} />)}
     </Fragment>
   );
 };

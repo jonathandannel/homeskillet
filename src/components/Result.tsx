@@ -18,7 +18,7 @@ const ResultCard: React.FC<IProps> = ({ result }): ReactElement => {
   const styles = resultCardStyles();
   const makeReservation = () => window.open(result.reserve_url, "_blank");
   const makeCall = () => window.open(`tel:${result.phone}`, "_blank");
-  return (
+  return result ? (
     <Card className={styles.main}>
       <Avatar className={styles.avatar} src={result.image_url} />
       <Container className={styles.content}>
@@ -41,6 +41,6 @@ const ResultCard: React.FC<IProps> = ({ result }): ReactElement => {
         </div>
       </Container>
     </Card>
-  );
+  ) : null;
 };
 export default ResultCard;

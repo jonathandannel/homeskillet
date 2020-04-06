@@ -159,14 +159,16 @@ const SearchFilter = ({
       </Container>
       <Container className={styles.cityList}>
         {cityList.map((c) => (
-          <Button
-            className={styles.cityButton}
-            onClick={() => chooseCity(c)}
-            variant="contained"
-            color="primary"
-          >
-            {c}
-          </Button>
+          <div className={styles.marginRight}>
+            <Button
+              className={styles.cityButton}
+              onClick={() => chooseCity(c)}
+              variant="contained"
+              color="primary"
+            >
+              {c}
+            </Button>
+          </div>
         ))}
       </Container>
     </Fragment>

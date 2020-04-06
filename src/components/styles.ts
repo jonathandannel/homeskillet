@@ -94,6 +94,9 @@ export const searchStyles = makeStyles(({ palette }) => ({
   cityList: {
     marginBottom: "2rem",
   },
+  marginRight: {
+    marginRight: "1rem",
+  },
   cityButton: {
     margin: "1rem",
   },

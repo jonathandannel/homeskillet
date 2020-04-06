@@ -1,6 +1,6 @@
 ### 1. How long did you spend on the coding test? What would you add to your solution if you had more time? If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
 
-- I spent about 2 days going at a leisurely pace. If I had more time, I would have worked more on the mobile responsiveness as well as some of the architectural decisions regarding my state management. I also would have added a lot more flair to the UI with features such as better restaurant card interactivity.
+- I spent about 2 days going at a leisurely pace. If I had more time, I would have worked more on the mobile responsiveness as well as some of the architectural decisions regarding my state management. I also would have added a lot more flair to the UI with features such as better restaurant card interactivity. I unfortunately was unable to complete the testing portion of the exercise given the time constraints and personal obligations over the weekend that I decided to pursue the project.
 
 ### 2. What was the most useful feature that was added to the latest version of your chosen language? Please include a snippet of code that shows how you've used it.
 

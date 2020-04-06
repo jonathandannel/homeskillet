@@ -114,6 +114,8 @@ const SearchFilter = ({
               <LocationOn className={styles.iconCity}></LocationOn>
               <TextField
                 required
+                aria-label="city-input"
+                data-testid="city-input"
                 color="secondary"
                 value={cityQuery}
                 onChange={handleCityInput}

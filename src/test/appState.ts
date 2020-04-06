@@ -1,4 +1,7 @@
-export const appState = {
+import { AppState } from "../interfaces";
+import { rootReducer } from "../reducers";
+
+export const appState: AppState = {
   loading: false,
   selectedCity: "Toronto",
   allCities: [

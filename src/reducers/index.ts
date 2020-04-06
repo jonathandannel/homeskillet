@@ -4,5 +4,5 @@ import searchReducer from "./searchReducer";
 
 export const rootReducer = combineReducers({
   app: appReducer,
-  search: searchReducer
+  search: searchReducer,
 });
